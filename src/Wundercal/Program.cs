@@ -11,7 +11,7 @@ namespace Wundercal
       {
         var calendars = Settings.CalendarsAddresses;
 
-        foreach (string calendar in calendars)
+        foreach (var calendar in calendars)
         {
           var calendarService = new CalendarService(new Uri(calendar));
 
@@ -26,8 +26,6 @@ namespace Wundercal
         Console.WriteLine(ex.Message);
         Console.WriteLine(ex.StackTrace);
       }
-
-      Console.ReadLine();
     }
   }
 }

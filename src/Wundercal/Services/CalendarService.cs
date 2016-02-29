@@ -12,13 +12,14 @@ namespace Wundercal.Services
 
     internal CalendarService(Uri uri)
     {
-      Console.WriteLine("CalendarService - calendar loading  ...");
+      Console.WriteLine("Loading  calendar ...");
       _calendar = iCalendar.LoadFromUri(uri )[0];
-      Console.WriteLine("CalendarService - calendar loaded.");
     }
 
     public List<CalendarEvent> GetCalendarEvents(DateTime startDate)
     {
+      Console.WriteLine("Geting calendar events ...");
+
       var events = _calendar.Events.Where(item => item.Start.Date.Date == startDate.Date);
       
       var calendarEvents = events.Select(item => new CalendarEvent(item.Summary, DateUtil.GetSimpleDateTimeData(item.Start))).ToList();

@@ -17,7 +17,7 @@ namespace Wundercal
 
     public void Execute()
     {
-      Console.WriteLine("CalendarProcessor started.");
+      Console.WriteLine("Executing processor ...");
 
       var events = _calendarService.GetCalendarEvents(DateTime.Today.AddDays(1));
       
@@ -29,13 +29,13 @@ namespace Wundercal
 
         events.ForEach(@event =>
         {
+          Console.WriteLine("Adding task: " + @event.Summary);
+
           var taskId = _wunderlistService.CreateTask(listId, "#cal " + @event.Summary, @event.StartDate);
           _wunderlistService.CreateReminder(taskId, @event.StartDate);
-          Console.WriteLine("CalendarProcessor added task. Title: " + @event.Summary);
+          
         });
       }
-
-      Console.WriteLine("CalendarProcessor successful ended.");
     }
   }
 }

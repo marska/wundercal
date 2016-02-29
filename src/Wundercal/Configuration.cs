@@ -7,10 +7,10 @@ namespace Wundercal
 {
   public class Settings
   {
-    public static List<string> CalendarsAddresses
-      =>
-        ConfigurationManager.AppSettings["CalendarsAddresses"].Split(new string[] {";", "; ", " ;", " ; " },
-          StringSplitOptions.RemoveEmptyEntries).ToList();
+    public static List<string> CalendarsAddresses =>
+        ConfigurationManager.AppSettings["CalendarsAddresses"]
+        .Split(new string[] {";", "; ", " ;", " ; " },StringSplitOptions.RemoveEmptyEntries).ToList();
+
     public static string WunderlistListName => ConfigurationManager.AppSettings["WunderlistListName"];
 
     public static string WunderlistAccessToken => ConfigurationManager.AppSettings["WunderlistAccessToken"];
