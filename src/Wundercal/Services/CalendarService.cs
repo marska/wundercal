@@ -13,7 +13,7 @@ namespace Wundercal.Services
     internal CalendarService(Uri uri)
     {
       Console.WriteLine("CalendarService - calendar loading  ...");
-      _calendar = iCalendar.LoadFromUri(uri)[0];
+      _calendar = iCalendar.LoadFromUri(uri )[0];
       Console.WriteLine("CalendarService - calendar loaded.");
     }
 

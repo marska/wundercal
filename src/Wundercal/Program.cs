@@ -9,18 +9,25 @@ namespace Wundercal
     {
       try
       {
-        var calendarService = new CalendarService(new Uri(Settings.CalendarAddress));
+        var calendars = Settings.CalendarsAddresses;
 
-        var wunderlistService = new WunderlistService(Settings.WunderlistAccessToken, Settings.WunderlistClientId);
+        foreach (string calendar in calendars)
+        {
+          var calendarService = new CalendarService(new Uri(calendar));
 
-        var processor = new CalendarProcessor(calendarService, wunderlistService);
-        processor.Execute();
+          var wunderlistService = new WunderlistService(Settings.WunderlistAccessToken, Settings.WunderlistClientId);
+
+          var processor = new CalendarProcessor(calendarService, wunderlistService);
+          processor.Execute();
+        }
       }
       catch (Exception ex)
       {
         Console.WriteLine(ex.Message);
         Console.WriteLine(ex.StackTrace);
       }
+
+      Console.ReadLine();
     }
   }
 }
