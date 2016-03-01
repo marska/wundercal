@@ -4,5 +4,6 @@ configuration: Release
 before_build:
   - nuget restore
 build:
+  project: src\Wundercal.sln
   verbosity: minimal
 test: off
