@@ -8,5 +8,5 @@ build:
   verbosity: minimal
 test: off
 artifacts:
-  - path: wundercal.zip
+  - path: wundercal\bin
     name: Wundercal
