@@ -7,3 +7,6 @@ build:
   project: src\Wundercal.sln
   verbosity: minimal
 test: off
+artifacts:
+  - path: wundercal.zip
+    name: Wundercal
