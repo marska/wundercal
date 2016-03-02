@@ -6,7 +6,8 @@ before_build:
 build:
   project: src\Wundercal.sln
   verbosity: minimal
-test: off
 artifacts:
-  - path: wundercal\bin
+  - path: bin
     name: Wundercal
+    type: zip
+test: off
