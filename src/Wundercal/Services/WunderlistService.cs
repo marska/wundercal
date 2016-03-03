@@ -11,11 +11,16 @@ namespace Wundercal.Services
 {
   public class WunderlistService : IWunderlistService
   {
-    private readonly HttpClient _httpClient = new HttpClient();
+    private readonly HttpClient _httpClient;
 
     public WunderlistService(string accessToken, string clientId)
     {
-      _httpClient.BaseAddress = new Uri("https://a.wunderlist.com/api/v1/");
+      var proxy = WebRequest.DefaultWebProxy;
+      proxy.Credentials = CredentialCache.DefaultNetworkCredentials;
+
+      var httpClientHandler = new HttpClientHandler() { Proxy = proxy };
+
+      _httpClient = new HttpClient(httpClientHandler) { BaseAddress = new Uri("https://a.wunderlist.com/api/v1/") };
       _httpClient.DefaultRequestHeaders.Accept.Clear();
       _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
