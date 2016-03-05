@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Wundercal.Services;
 
 namespace Wundercal
@@ -31,7 +32,7 @@ namespace Wundercal
         {
           Console.WriteLine("Adding task: " + @event.Summary);
 
-          var taskId = _wunderlistService.CreateTask(listId, "#cal " + @event.Summary, @event.StartDate);
+          var taskId = _wunderlistService.CreateTask(listId, $"{Settings.TaskTags} {@event.Summary}", @event.StartDate);
           _wunderlistService.CreateReminder(taskId, @event.StartDate);
           
         });

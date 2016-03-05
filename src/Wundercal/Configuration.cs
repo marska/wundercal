@@ -9,12 +9,14 @@ namespace Wundercal
   {
     public static List<string> CalendarsAddresses =>
         ConfigurationManager.AppSettings["CalendarsAddresses"]
-        .Split(new string[] {";", "; ", " ;", " ; " },StringSplitOptions.RemoveEmptyEntries).ToList();
+        .Split(new[] {";", "; ", " ;", " ; " },StringSplitOptions.RemoveEmptyEntries).ToList();
 
     public static string WunderlistListName => ConfigurationManager.AppSettings["WunderlistListName"];
 
     public static string WunderlistAccessToken => ConfigurationManager.AppSettings["WunderlistAccessToken"];
 
     public static string WunderlistClientId => ConfigurationManager.AppSettings["WunderlistClientId"];
+
+    public static string TaskTags => ConfigurationManager.AppSettings["TaskTags"];
   }
 }
