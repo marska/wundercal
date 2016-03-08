@@ -20,7 +20,7 @@ namespace Wundercal
     {
       Console.WriteLine("Executing processor ...");
 
-      var events = _calendarService.GetCalendarEvents(DateTime.Today.AddDays(1));
+      var events = _calendarService.GetCalendarEvents(DateTime.Today);
       
       if (events.Count > 0)
       {
