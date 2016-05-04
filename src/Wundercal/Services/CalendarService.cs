@@ -20,11 +20,9 @@ namespace Wundercal.Services
     {
       Console.WriteLine("Geting calendar events ...");
 
-      var occurrences = _calendar.GetOccurrences(new iCalDateTime(date));
-
-      var calendarEvents = occurrences.Select(o => o.Source)
-        .OfType<IRecurringComponent>()
-        .Select(rc => new CalendarEvent(rc.Summary, DateUtil.GetSimpleDateTimeData(rc.Start)))
+      var calendarEvents = occurrences
+        .Select(o => new CalendarEvent(((IRecurringComponent)o.Source).Summary, DateUtil.GetSimpleDateTimeData(o.Period.StartTime)))
+        .Where(ce => !string.IsNullOrEmpty(ce.Summary))
         .ToList();
 
       return calendarEvents;
