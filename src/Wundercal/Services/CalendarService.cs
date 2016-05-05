@@ -19,11 +19,11 @@ namespace Wundercal.Services
     public List<CalendarEvent> GetCalendarEvents(DateTime date)
     {
       Console.WriteLine("Geting calendar events ...");
-      
+
       var occurrences = _calendar.GetOccurrences(new iCalDateTime(date));
-      
+
       var calendarEvents = occurrences
-        .Select(o => new CalendarEvent(((IRecurringComponent)o.Source).Summary, DateUtil.GetSimpleDateTimeData(o.Period.StartTime)))
+        .Select(o => new CalendarEvent(((IRecurringComponent)o.Source).Summary, o.Period.StartTime.UTC))
         .Where(ce => !string.IsNullOrEmpty(ce.Summary))
         .ToList();
 

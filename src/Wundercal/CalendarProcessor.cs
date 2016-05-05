@@ -30,7 +30,7 @@ namespace Wundercal
 
         events.ForEach(@event =>
         {
-          Console.WriteLine("Adding task: " + @event.Summary);
+          Console.WriteLine("Adding task. Date = [{0}], Summary = [{1}]", @event.StartDate, @event.Summary);
 
           var taskId = _wunderlistService.CreateTask(listId, $"{Settings.TaskTags} {@event.Summary}", @event.StartDate);
           _wunderlistService.CreateReminder(taskId, @event.StartDate);
